@@ -1,0 +1,13 @@
+{
+  "main-home": { "main-home": "Home" },
+  "main-about": { "main-about": "About" },
+  "main-contact": { "main-contact": "Contact" },
+  "login": { "login": "login" },
+ 
+
+  "header": { "home": "Home" },
+  "about": { "about": "About" },
+  "contact": { "contact": "Contact" },
+  "send-button":{"send-button": "Send"}
+  
+}
