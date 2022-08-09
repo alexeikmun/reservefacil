@@ -1,7 +1,7 @@
 const { gql } = require("apollo-server");
 
 const typeDef = gql`
-type SuccessResponse {
+  type SuccessResponse {
     success: Boolean!
     data: Data!
     code: Int!
@@ -11,6 +11,7 @@ type SuccessResponse {
 
   type Error {
     message: String!
-  }`;
+  }
+`;
 
-    module.exports = {typeDef};
+module.exports = { typeDef };
