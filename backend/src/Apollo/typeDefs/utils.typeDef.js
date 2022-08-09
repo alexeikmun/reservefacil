@@ -7,7 +7,7 @@ const typeDef = gql`
     code: Int!
   }
 
-  union Data = Auth | Error
+  union Data = Auth | Error | Booking
 
   type Error {
     message: String!
