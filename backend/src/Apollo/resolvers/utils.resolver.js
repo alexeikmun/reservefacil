@@ -1,18 +1,14 @@
 const resolver = {
   Data: {
     __resolveType(obj) {
-      if (obj.message) {
-        return "Error";
-      }
-
-      return "Auth";
-    },
+      return obj.__typename;
+    }
   },
   Auth: {
     password: async (obj) => {
-      return ''
+      return '';
     }
   }
 };
 
-module.exports = {resolver}
+module.exports = { resolver };
