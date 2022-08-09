@@ -1,16 +1,17 @@
-const { gql } = require("apollo-server");
+const { gql } = require('apollo-server');
 
 const typeDef = gql`
-type SuccessResponse {
+  type SuccessResponse {
     success: Boolean!
     data: Data!
     code: Int!
   }
 
-  union Data = Auth | Error
+  union Data = Auth | Error | Country
 
   type Error {
     message: String!
-  }`;
+  }
+`;
 
-    module.exports = {typeDef};
+module.exports = { typeDef };
