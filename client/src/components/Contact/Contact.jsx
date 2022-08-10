@@ -1,17 +1,19 @@
 import React from 'react';
-import { Button } from '../UI/Button';
+
 import style from './contact.module.sass';
+import { useTranslation } from 'react-i18next';
 
 export default function Contact() {
+  const [t, i18n] = useTranslation('global');
   return (
     <div className={style.container}>
       <form className={style.form}>
-        <h1>Contact</h1>
+        <h1>{t('contact.contact')}</h1>
         <input type='text' />
         <input type='text' />
         <input type='mail' />
         <input type='number' />
-        <Button className={style.button}>Send</Button>
+        <button className={style.button}>{t('send-button.send-button')}</button>
       </form>
     </div>
   );
