@@ -8,7 +8,6 @@
 /.pnp
 .pnp.js
 
-
 # testing
 /coverage
 
@@ -24,6 +23,11 @@
 .env.production.local
 */*/.DS_Store
 .vscode/
+**/node_modules
+**/yarn.lock
+gitignore
+**/.env
+
 
 **/yarn.lock
 npm-debug.log*

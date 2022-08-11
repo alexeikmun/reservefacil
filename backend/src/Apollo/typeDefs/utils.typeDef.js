@@ -7,11 +7,13 @@ const typeDef = gql`
     code: Int!
   }
 
+
   union Data = Auth | Error | Country
 
   type Error {
     message: String!
   }
 `;
+
 
 module.exports = { typeDef };
