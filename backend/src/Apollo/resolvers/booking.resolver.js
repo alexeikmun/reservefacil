@@ -1,69 +1,24 @@
-const bookingModel = require("../../models/bookingModel");
+const BookingModel = require("../../models/bookingModel");
+const Creator = require("../../controllers/Creator");
 
 const resolver = {
   Query: {
     BookingByClient: async (_, args) => {
-      const { id } = args;
-      const booking = await bookingModel.find({ idClient: id });
-      return {
-        __typename: "DataResponse",
-        success: true,
-        data: { booking },
-        code: 200,
-      };
+      const res = new Creator(BookingModel, args);
+      return await res.findBy("user");
     },
   },
   Mutation: {
     CreateBooking: async (_, args) => {
-      const {
-        user,
-        startDate,
-        endDate,
-        idHotel,
-        numberOfPeople,
-        numberOfRooms,
-        total,
-      } = args;
-      if (!user) {
-        return {
-          success: false,
-          data: { message: "User must be defined" },
-          code: 400,
-        };
-      }
-      const newBooking = new bookingModel({
-        user,
-        startDate,
-        endDate,
-        idHotel,
-        numberOfPeople,
-        numberOfRooms,
-        total,
-      });
-      const result = await newBooking.save();
-      return returnBooking(result);
+      const newArgs = { ...args, bookingStatus: "PENDING", status: "ACTIVE" };
+      const res = new Creator(BookingModel, newArgs);
+      return await res.create();
+    },
+    ConfirmBooking: async (_, args) => {
+      const res = new Creator(BookingModel, args);
+      return await res.update();
     },
   },
 };
 
-const returnBooking = (booking) => {
-  if (booking) {
-    console.log(booking);
-    return {
-      __typename: "Booking",
-      success: true,
-      data: {
-        user: booking.user,
-        startDate: booking.startDate,
-        endDate: booking.endDate,
-        idHotel: booking.idHotel,
-        numberOfPeople: booking.numberOfPeople,
-        numberOfRooms: booking.numberOfRooms,
-        total: booking.total,
-      },
-      code: 200,
-    };
-  }
-};
-
-module.exports = { resolver };
+module.exports = resolver;
