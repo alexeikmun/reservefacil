@@ -51,7 +51,10 @@ module.exports = class Creator {
   async findBy(attribute) {
     if (this.model.hasOwnProperty(attribute) || !this.data[attribute])
       throw new ApolloError("Attribute is not in model", "500");
-    const reg = new RegExp(this.data[attribute], "i");
+    const reg =
+      typeof this.data[attribute] === "number"
+        ? this.data[attribute]
+        : new RegExp(this.data[attribute], "i");
     const res = await this.model.find({ [attribute]: reg, status: "ACTIVE" });
     this.returnNotFound(res);
     return res;
@@ -81,9 +84,8 @@ module.exports = class Creator {
    */
   async update() {
     const res = await this.findById();
-
     Object.keys(this.data).forEach((key) => {
-      res[key] = this.data[key];
+      res[key] = this.data[key] || res[key];
     });
     return await res.save();
   }

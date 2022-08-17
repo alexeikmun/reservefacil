@@ -14,23 +14,27 @@ const bookingSchema = new mongoose.Schema(
       type: Date,
       required: [true, "Please add an end date"],
     },
-    idHotel: {
-      type: Number,
-      // ref: "Hotel",
-      required: [true, "Please add a hotel"],
+    rooms: {
+      type: Array,
+      required: [true, "Please add rooms"],
     },
     numberOfPeople: {
       type: Number,
       required: [true, "Please add a number of people"],
     },
-    numberOfRooms: {
-      type: Number,
-      required: [true, "Please add a number of rooms"],
+    bookingStatus: {
+      type: String,
+      enum: ["CONFIRMED", "PENDING", "CANCELLED"],
+      required: true,
     },
     total: {
       taxes: Number,
       subtotal: Number,
       total: Number,
+    },
+    status: {
+      type: String,
+      enum: ["ACTIVE", "INACTIVE"],
     },
   },
   {

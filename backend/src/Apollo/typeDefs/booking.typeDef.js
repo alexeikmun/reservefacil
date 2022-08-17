@@ -12,14 +12,13 @@ const typeDef = gql`
     user: Int
     startDate: ISODate
     endDate: ISODate
-    idHotel: Int
+    rooms: [String]
     numberOfPeople: Int
-    numberOfRooms: Int
     total: total
   }
 
   type Query {
-    BookingByClient(id: Int): SuccessResponse
+    BookingByClient(user: Int): [Booking]
   }
   input totalInput {
     taxes: Int
@@ -31,11 +30,11 @@ const typeDef = gql`
       user: Int!
       startDate: ISODate!
       endDate: ISODate!
-      idHotel: Int!
+      rooms: [String]!
       numberOfPeople: Int!
-      numberOfRooms: Int!
       total: totalInput
-    ): SuccessResponse
+    ): Booking
+    ConfirmBooking(id: ID!, bookingStatus: String!): Booking
   }
 `;
 
