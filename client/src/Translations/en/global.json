@@ -2,12 +2,15 @@
   "main-home": { "main-home": "Home" },
   "main-about": { "main-about": "About" },
   "main-contact": { "main-contact": "Contact" },
-  "login": { "login": "login" },
- 
+  "login": {
+    "login": "login",
+    "username": "Username",
+    "password": "Password",
+    "logout": "Logout"
+  },
 
   "header": { "home": "Home" },
   "about": { "about": "About" },
   "contact": { "contact": "Contact" },
-  "send-button":{"send-button": "Send"}
-  
+  "send-button": { "send-button": "Send" }
 }
