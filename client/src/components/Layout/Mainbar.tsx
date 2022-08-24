@@ -5,14 +5,23 @@ import styles from "./Mainbar.module.sass";
 import esFlag from "../UI/assets/Flags/es.svg";
 import usFlag from "../UI/assets/Flags/us.svg";
 import { Button } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "../../hook";
+import { authActions } from "../../store/auth";
 
 export function Mainbar() {
   const [t, i18n] = useTranslation("global");
+  const isAuthenticated = useAppSelector((state) => state.isAuthenticated);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleLogin = () => {
-    console.log("im clicking");
-    navigate("./login", { replace: true });
+    if (!isAuthenticated) {
+      navigate("./login", { replace: true });
+    }
   };
+  const handleLogout = () => {
+    dispatch(authActions.logout());
+  };
+
   const handleChangleLng = (lng: any) => {
     i18n.changeLanguage(lng);
     localStorage.setItem("lng", lng);
@@ -46,7 +55,12 @@ export function Mainbar() {
           </div>
         </li>
       </ul>
-      <Button onClick={handleLogin}>{t("login.login")}</Button>
+      {isAuthenticated && (
+        <Button onClick={handleLogout}>{t("login.logout")}</Button>
+      )}
+      {!isAuthenticated && (
+        <Button onClick={handleLogin}>{t("login.login")}</Button>
+      )}
     </nav>
   );
 }

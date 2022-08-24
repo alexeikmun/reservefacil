@@ -2,11 +2,15 @@
   "main-home": { "main-home": "Inicio" },
   "main-about": { "main-about": "Acerca de Nosotros" },
   "main-contact": { "main-contact": "Contactenos" },
-  "login": { "login": "Registrarse" },
+  "login": {
+    "login": "Registrarse",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "logout": "Cerrar Sesión"
+  },
 
   "header": { "home": "Bienvenido" },
   "about": { "about": "Acerca de nosotros" },
   "contact": { "contact": "Contactenos" },
-  "send-button":{"send-button": "Enviar"}
-  
+  "send-button": { "send-button": "Enviar" }
 }

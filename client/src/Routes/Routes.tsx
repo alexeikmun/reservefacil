@@ -10,11 +10,11 @@ export const Routes = () => {
   return (
     <Layout>
       <Router>
-        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/languaje" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Home />} />
       </Router>
     </Layout>
   );
